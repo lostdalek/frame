@@ -2,6 +2,7 @@
 const AuthPlugin = require('../auth');
 const Boom = require('boom');
 const Joi = require('joi');
+const Config = require('../../config');
 
 
 const internals = {};
@@ -17,7 +18,7 @@ internals.applyRoutes = function (server, next) {
         path: '/users',
         config: {
             auth: {
-                strategy: 'simple',
+                strategy: Config.get('/authStrategy'),
                 scope: 'admin'
             },
             validate: {
@@ -69,7 +70,7 @@ internals.applyRoutes = function (server, next) {
         path: '/users/{id}',
         config: {
             auth: {
-                strategy: 'simple',
+                strategy: Config.get('/authStrategy'),
                 scope: 'admin'
             },
             pre: [
@@ -99,7 +100,7 @@ internals.applyRoutes = function (server, next) {
         path: '/users/my',
         config: {
             auth: {
-                strategy: 'simple',
+                strategy: Config.get('/authStrategy'),
                 scope: ['admin', 'account']
             }
         },
@@ -129,7 +130,7 @@ internals.applyRoutes = function (server, next) {
         path: '/users',
         config: {
             auth: {
-                strategy: 'simple',
+                strategy: Config.get('/authStrategy'),
                 scope: 'admin'
             },
             validate: {
@@ -209,7 +210,7 @@ internals.applyRoutes = function (server, next) {
         path: '/users/{id}',
         config: {
             auth: {
-                strategy: 'simple',
+                strategy: Config.get('/authStrategy'),
                 scope: 'admin'
             },
             validate: {
@@ -303,7 +304,7 @@ internals.applyRoutes = function (server, next) {
         path: '/users/my',
         config: {
             auth: {
-                strategy: 'simple',
+                strategy: Config.get('/authStrategy'),
                 scope: ['admin', 'account']
             },
             validate: {
@@ -391,7 +392,7 @@ internals.applyRoutes = function (server, next) {
         path: '/users/{id}/password',
         config: {
             auth: {
-                strategy: 'simple',
+                strategy: Config.get('/authStrategy'),
                 scope: 'admin'
             },
             validate: {
@@ -446,7 +447,7 @@ internals.applyRoutes = function (server, next) {
         path: '/users/my/password',
         config: {
             auth: {
-                strategy: 'simple',
+                strategy: Config.get('/authStrategy'),
                 scope: ['admin', 'account']
             },
             validate: {
@@ -501,7 +502,7 @@ internals.applyRoutes = function (server, next) {
         path: '/users/{id}',
         config: {
             auth: {
-                strategy: 'simple',
+                strategy: Config.get('/authStrategy'),
                 scope: 'admin'
             },
             validate: {

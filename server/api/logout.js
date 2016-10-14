@@ -1,5 +1,6 @@
 'use strict';
 const Boom = require('boom');
+const Config = require('../../config');
 
 
 const internals = {};
@@ -16,7 +17,7 @@ internals.applyRoutes = function (server, next) {
         config: {
             auth: {
                 mode: 'try',
-                strategy: 'simple'
+                strategy: Config.get('/authStrategy')
             }
         },
         handler: function (request, reply) {

@@ -46,7 +46,6 @@ class Session extends MongoModels {
                     key: results.keyHash.hash,
                     time: new Date()
                 };
-
                 self.insertOne(document, done);
             }],
             clean: ['newSession', function (results, done) {
@@ -80,7 +79,6 @@ class Session extends MongoModels {
                 self.findById(id, done);
             },
             keyMatch: ['session', function (results, done) {
-
                 if (!results.session) {
                     return done(null, false);
                 }

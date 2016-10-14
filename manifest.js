@@ -26,6 +26,9 @@ const manifest = {
     }],
     registrations: [
         {
+            plugin: 'hapi-auth-jwt2'
+        },
+        {
             plugin: 'hapi-auth-basic'
         },
         {

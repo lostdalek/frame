@@ -3,6 +3,7 @@ const Async = require('async');
 const Boom = require('boom');
 const Config = require('../../config');
 const Joi = require('joi');
+const createToken = require('../utils/token');
 
 
 const internals = {};
@@ -162,6 +163,7 @@ internals.applyRoutes = function (server, next) {
                         roles: user.roles
                     },
                     session: results.session,
+                    id_token: createToken(user, results.session),
                     authHeader
                 });
             });

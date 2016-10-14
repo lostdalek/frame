@@ -3,6 +3,7 @@ const Async = require('async');
 const AuthPlugin = require('../auth');
 const Boom = require('boom');
 const Joi = require('joi');
+const Config = require('../../config');
 
 
 const internals = {};
@@ -20,7 +21,7 @@ internals.applyRoutes = function (server, next) {
         path: '/accounts',
         config: {
             auth: {
-                strategy: 'simple',
+                strategy: Config.get('/authStrategy'),
                 scope: 'admin'
             },
             validate: {
@@ -57,7 +58,7 @@ internals.applyRoutes = function (server, next) {
         path: '/accounts/{id}',
         config: {
             auth: {
-                strategy: 'simple',
+                strategy: Config.get('/authStrategy'),
                 scope: 'admin'
             }
         },
@@ -84,7 +85,7 @@ internals.applyRoutes = function (server, next) {
         path: '/accounts/my',
         config: {
             auth: {
-                strategy: 'simple',
+                strategy: Config.get('/authStrategy'),
                 scope: 'account'
             }
         },
@@ -114,7 +115,7 @@ internals.applyRoutes = function (server, next) {
         path: '/accounts',
         config: {
             auth: {
-                strategy: 'simple',
+                strategy: Config.get('/authStrategy'),
                 scope: 'admin'
             },
             validate: {
@@ -144,7 +145,7 @@ internals.applyRoutes = function (server, next) {
         path: '/accounts/{id}',
         config: {
             auth: {
-                strategy: 'simple',
+                strategy: Config.get('/authStrategy'),
                 scope: 'admin'
             },
             validate: {
@@ -187,7 +188,7 @@ internals.applyRoutes = function (server, next) {
         path: '/accounts/my',
         config: {
             auth: {
-                strategy: 'simple',
+                strategy: Config.get('/authStrategy'),
                 scope: 'account'
             },
             validate: {
@@ -229,7 +230,7 @@ internals.applyRoutes = function (server, next) {
         path: '/accounts/{id}/user',
         config: {
             auth: {
-                strategy: 'simple',
+                strategy: Config.get('/authStrategy'),
                 scope: 'admin'
             },
             validate: {
@@ -340,7 +341,7 @@ internals.applyRoutes = function (server, next) {
         path: '/accounts/{id}/user',
         config: {
             auth: {
-                strategy: 'simple',
+                strategy: Config.get('/authStrategy'),
                 scope: 'admin'
             },
             pre: [{
@@ -425,7 +426,7 @@ internals.applyRoutes = function (server, next) {
         path: '/accounts/{id}/notes',
         config: {
             auth: {
-                strategy: 'simple',
+                strategy: Config.get('/authStrategy'),
                 scope: 'admin'
             },
             validate: {
@@ -467,7 +468,7 @@ internals.applyRoutes = function (server, next) {
         path: '/accounts/{id}/status',
         config: {
             auth: {
-                strategy: 'simple',
+                strategy: Config.get('/authStrategy'),
                 scope: 'admin'
             },
             validate: {
@@ -528,7 +529,7 @@ internals.applyRoutes = function (server, next) {
         path: '/accounts/{id}',
         config: {
             auth: {
-                strategy: 'simple',
+                strategy: Config.get('/authStrategy'),
                 scope: 'admin'
             },
             pre: [

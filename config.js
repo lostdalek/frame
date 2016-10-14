@@ -21,6 +21,7 @@ const config = {
             $default: 9000
         }
     },
+    authStrategy: 'jwt',
     authAttempts: {
         forIp: 50,
         forIpAndUser: 7
@@ -29,6 +30,11 @@ const config = {
         $filter: 'env',
         production: process.env.COOKIE_SECRET,
         $default: '!k3yb04rdK4tz~4qu4~k3yb04rdd0gz!'
+    },
+    jwtSecret: {
+        $filter: 'env',
+        production: process.env.JWT_SECRET,
+        $default: 'aStrongJwtSecret-#mgtfYK@QuRV8VMM7T>WfN4;^fMVr)y'
     },
     hapiMongoModels: {
         mongodb: {

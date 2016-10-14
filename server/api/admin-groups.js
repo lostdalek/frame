@@ -2,6 +2,7 @@
 const AuthPlugin = require('../auth');
 const Boom = require('boom');
 const Joi = require('joi');
+const Config = require('../../config');
 
 
 const internals = {};
@@ -17,7 +18,7 @@ internals.applyRoutes = function (server, next) {
         path: '/admin-groups',
         config: {
             auth: {
-                strategy: 'simple',
+                strategy: Config.get('/authStrategy'),
                 scope: 'admin'
             },
             validate: {
@@ -57,7 +58,7 @@ internals.applyRoutes = function (server, next) {
         path: '/admin-groups/{id}',
         config: {
             auth: {
-                strategy: 'simple',
+                strategy: Config.get('/authStrategy'),
                 scope: 'admin'
             },
             pre: [
@@ -87,7 +88,7 @@ internals.applyRoutes = function (server, next) {
         path: '/admin-groups',
         config: {
             auth: {
-                strategy: 'simple',
+                strategy: Config.get('/authStrategy'),
                 scope: 'admin'
             },
             validate: {
@@ -120,7 +121,7 @@ internals.applyRoutes = function (server, next) {
         path: '/admin-groups/{id}',
         config: {
             auth: {
-                strategy: 'simple',
+                strategy: Config.get('/authStrategy'),
                 scope: 'admin'
             },
             validate: {
@@ -165,7 +166,7 @@ internals.applyRoutes = function (server, next) {
         path: '/admin-groups/{id}/permissions',
         config: {
             auth: {
-                strategy: 'simple',
+                strategy: Config.get('/authStrategy'),
                 scope: 'admin'
             },
             validate: {
@@ -206,7 +207,7 @@ internals.applyRoutes = function (server, next) {
         path: '/admin-groups/{id}',
         config: {
             auth: {
-                strategy: 'simple',
+                strategy: Config.get('/authStrategy'),
                 scope: 'admin'
             },
             validate: {

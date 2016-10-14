@@ -4,7 +4,7 @@ const Bcrypt = require('bcrypt');
 const Boom = require('boom');
 const Config = require('../../config');
 const Joi = require('joi');
-
+const createToken = require('../utils/token');
 
 const internals = {};
 
@@ -98,9 +98,16 @@ internals.applyRoutes = function (server, next) {
             }]
         },
         handler: function (request, reply) {
-
             const credentials = request.pre.session._id.toString() + ':' + request.pre.session.key;
-            const authHeader = 'Basic ' + new Buffer(credentials).toString('base64');
+            const token = createToken(request.pre.user, request.pre.session);
+
+            let authHeader = '';
+
+            if( Config.get('authStrategy') === 'simple') {
+                authHeader = 'Basic ' + new Buffer(credentials).toString('base64');
+            } else {
+                authHeader = 'Bearer ' + token;
+            }
 
             reply({
                 user: {
@@ -109,6 +116,7 @@ internals.applyRoutes = function (server, next) {
                     email: request.pre.user.email,
                     roles: request.pre.user.roles
                 },
+                id_token: token,
                 session: request.pre.session,
                 authHeader
             });
